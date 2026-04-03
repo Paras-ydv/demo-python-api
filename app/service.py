@@ -1,13 +1,6 @@
-import random
-from typing import List
+from datetime import datetime
 
 class DemoService:
-    def __init__(self):
-        self.items: List[str] = []
-
-    def add(self, item: str) -> None:
-        self.items.append(item)
-
-    def get_all(self) -> List[str]:
-        return self.items
-    # auto-commit: 1775198670007
+    def get_status(self):
+        return {"status": "ok", "time": str(datetime.now())}
+    # auto-commit: 1775198730006

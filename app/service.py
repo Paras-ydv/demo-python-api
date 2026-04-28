@@ -1,9 +1,9 @@
-import uuid
+import math
 
 class DemoService:
-    def generate_id(self) -> str:
-        return str(uuid.uuid4())
+    def distance(self, x1: float, y1: float, x2: float, y2: float) -> float:
+        return math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
 
-    def short_id(self) -> str:
-        return str(uuid.uuid4())[:8]
-    # auto-commit: 1777399723939
+    def area_circle(self, radius: float) -> float:
+        return math.pi * radius ** 2
+    # auto-commit: 1777399725526

@@ -1,9 +1,9 @@
-import math
+import base64
 
 class DemoService:
-    def distance(self, x1: float, y1: float, x2: float, y2: float) -> float:
-        return math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
+    def encode(self, text: str) -> str:
+        return base64.b64encode(text.encode()).decode()
 
-    def area_circle(self, radius: float) -> float:
-        return math.pi * radius ** 2
-    # auto-commit: 1777399781074
+    def decode(self, encoded: str) -> str:
+        return base64.b64decode(encoded.encode()).decode()
+    # auto-commit: 1777399782517

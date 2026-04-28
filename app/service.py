@@ -1,13 +1,9 @@
-import random
-from typing import List
+import hashlib
 
 class DemoService:
-    def __init__(self):
-        self.items: List[str] = []
+    def hash_data(self, data: str) -> str:
+        return hashlib.sha256(data.encode()).hexdigest()
 
-    def add(self, item: str) -> None:
-        self.items.append(item)
-
-    def get_all(self) -> List[str]:
-        return self.items
-    # auto-commit: 1777399772886
+    def validate(self, data: str, expected: str) -> bool:
+        return self.hash_data(data) == expected
+    # auto-commit: 1777399774440

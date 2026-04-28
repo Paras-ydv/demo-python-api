@@ -1,9 +1,10 @@
+from collections import Counter
 from typing import List
 
 class DemoService:
-    def filter_items(self, items: List[str], prefix: str) -> List[str]:
-        return [i for i in items if i.startswith(prefix)]
+    def count_frequency(self, items: List[str]) -> dict:
+        return dict(Counter(items))
 
-    def count_matches(self, items: List[str], pattern: str) -> int:
-        return sum(1 for i in items if pattern in i)
-    # auto-commit: 1777399764984
+    def most_common(self, items: List[str], n: int = 1) -> List[tuple]:
+        return Counter(items).most_common(n)
+    # auto-commit: 1777399766643

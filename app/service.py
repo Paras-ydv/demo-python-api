@@ -1,12 +1,9 @@
-import hashlib
-import datetime import datetime
+import uuid
 
 class DemoService:
-    def hash_data(self, data: str) -> str:
-        return hashlib.sha256(data.encode()).hexdigest()
+    def generate_id(self) -> str:
+        return str(uuid.uuid4())
 
-    def validate(self, data: str, expected: str) -> bool:
-        return self.hash_data(data) == expected
-    # auto-commit: 1775200975722
-    def get_status(self):
-        return {"status": "ok", "time": str(datetime.now())}
+    def short_id(self) -> str:
+        return str(uuid.uuid4())[:8]
+    # auto-commit: 1777399710125

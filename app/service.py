@@ -1,9 +1,9 @@
-from typing import List
+import uuid
 
 class DemoService:
-    def filter_items(self, items: List[str], prefix: str) -> List[str]:
-        return [i for i in items if i.startswith(prefix)]
+    def generate_id(self) -> str:
+        return str(uuid.uuid4())
 
-    def count_matches(self, items: List[str], pattern: str) -> int:
-        return sum(1 for i in items if pattern in i)
-    # auto-commit: 1777399735723
+    def short_id(self) -> str:
+        return str(uuid.uuid4())[:8]
+    # auto-commit: 1777399737184

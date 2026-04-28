@@ -1,12 +1,13 @@
-from typing import Dict, Any
+import random
+from typing import List
 
 class DemoService:
     def __init__(self):
-        self.cache: Dict[str, Any] = {}
+        self.items: List[str] = []
 
-    def set(self, key: str, value: Any) -> None:
-        self.cache[key] = value
+    def add(self, item: str) -> None:
+        self.items.append(item)
 
-    def get(self, key: str) -> Any:
-        return self.cache.get(key)
-    # auto-commit: 1777399761502
+    def get_all(self) -> List[str]:
+        return self.items
+    # auto-commit: 1777399762939

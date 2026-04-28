@@ -1,9 +1,12 @@
-from typing import List
+from typing import Dict, Any
 
 class DemoService:
-    def filter_items(self, items: List[str], prefix: str) -> List[str]:
-        return [i for i in items if i.startswith(prefix)]
+    def __init__(self):
+        self.cache: Dict[str, Any] = {}
 
-    def count_matches(self, items: List[str], pattern: str) -> int:
-        return sum(1 for i in items if pattern in i)
-    # auto-commit: 1777399759960
+    def set(self, key: str, value: Any) -> None:
+        self.cache[key] = value
+
+    def get(self, key: str) -> Any:
+        return self.cache.get(key)
+    # auto-commit: 1777399761502

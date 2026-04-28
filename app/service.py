@@ -1,10 +1,9 @@
-from collections import Counter
-from typing import List
+import json
 
 class DemoService:
-    def count_frequency(self, items: List[str]) -> dict:
-        return dict(Counter(items))
+    def serialize(self, data: dict) -> str:
+        return json.dumps(data)
 
-    def most_common(self, items: List[str], n: int = 1) -> List[tuple]:
-        return Counter(items).most_common(n)
-    # auto-commit: 1777399741614
+    def deserialize(self, text: str) -> dict:
+        return json.loads(text)
+    # auto-commit: 1777399743073

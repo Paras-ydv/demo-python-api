@@ -1,9 +1,9 @@
-import math
+from typing import List
 
 class DemoService:
-    def distance(self, x1: float, y1: float, x2: float, y2: float) -> float:
-        return math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
+    def filter_items(self, items: List[str], prefix: str) -> List[str]:
+        return [i for i in items if i.startswith(prefix)]
 
-    def area_circle(self, radius: float) -> float:
-        return math.pi * radius ** 2
-    # auto-commit: 1777401055858
+    def count_matches(self, items: List[str], pattern: str) -> int:
+        return sum(1 for i in items if pattern in i)
+    # auto-commit: 1777401057347

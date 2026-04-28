@@ -1,9 +1,12 @@
-import math
+from typing import Dict, Any
 
 class DemoService:
-    def distance(self, x1: float, y1: float, x2: float, y2: float) -> float:
-        return math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
+    def __init__(self):
+        self.cache: Dict[str, Any] = {}
 
-    def area_circle(self, radius: float) -> float:
-        return math.pi * radius ** 2
-    # auto-commit: 1777399715659
+    def set(self, key: str, value: Any) -> None:
+        self.cache[key] = value
+
+    def get(self, key: str) -> Any:
+        return self.cache.get(key)
+    # auto-commit: 1777399717408

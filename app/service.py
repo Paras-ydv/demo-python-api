@@ -1,13 +1,9 @@
-import random
-from typing import List
+import json
 
 class DemoService:
-    def __init__(self):
-        self.items: List[str] = []
+    def serialize(self, data: dict) -> str:
+        return json.dumps(data)
 
-    def add(self, item: str) -> None:
-        self.items.append(item)
-
-    def get_all(self) -> List[str]:
-        return self.items
-    # auto-commit: 1777399753759
+    def deserialize(self, text: str) -> dict:
+        return json.loads(text)
+    # auto-commit: 1777399755361

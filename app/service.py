@@ -1,9 +1,9 @@
-import json
+import uuid
 
 class DemoService:
-    def serialize(self, data: dict) -> str:
-        return json.dumps(data)
+    def generate_id(self) -> str:
+        return str(uuid.uuid4())
 
-    def deserialize(self, text: str) -> dict:
-        return json.loads(text)
-    # auto-commit: 1777399743073
+    def short_id(self) -> str:
+        return str(uuid.uuid4())[:8]
+    # auto-commit: 1777399744542

@@ -1,9 +1,13 @@
-import base64
+import random
+from typing import List
 
 class DemoService:
-    def encode(self, text: str) -> str:
-        return base64.b64encode(text.encode()).decode()
+    def __init__(self):
+        self.items: List[str] = []
 
-    def decode(self, encoded: str) -> str:
-        return base64.b64decode(encoded.encode()).decode()
-    # auto-commit: 1777399752145
+    def add(self, item: str) -> None:
+        self.items.append(item)
+
+    def get_all(self) -> List[str]:
+        return self.items
+    # auto-commit: 1777399753759

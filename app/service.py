@@ -1,9 +1,10 @@
-import hashlib
+from collections import Counter
+from typing import List
 
 class DemoService:
-    def hash_data(self, data: str) -> str:
-        return hashlib.sha256(data.encode()).hexdigest()
+    def count_frequency(self, items: List[str]) -> dict:
+        return dict(Counter(items))
 
-    def validate(self, data: str, expected: str) -> bool:
-        return self.hash_data(data) == expected
-    # auto-commit: 1777399740158
+    def most_common(self, items: List[str], n: int = 1) -> List[tuple]:
+        return Counter(items).most_common(n)
+    # auto-commit: 1777399741614

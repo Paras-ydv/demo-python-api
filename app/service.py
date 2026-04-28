@@ -1,13 +1,9 @@
-import random
-from typing import List
+import math
 
 class DemoService:
-    def __init__(self):
-        self.items: List[str] = []
+    def distance(self, x1: float, y1: float, x2: float, y2: float) -> float:
+        return math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
 
-    def add(self, item: str) -> None:
-        self.items.append(item)
-
-    def get_all(self) -> List[str]:
-        return self.items
-    # auto-commit: 1777400179226
+    def area_circle(self, radius: float) -> float:
+        return math.pi * radius ** 2
+    # auto-commit: 1777401055858

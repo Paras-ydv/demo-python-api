@@ -1,9 +1,9 @@
-import uuid
+import hashlib
 
 class DemoService:
-    def generate_id(self) -> str:
-        return str(uuid.uuid4())
+    def hash_data(self, data: str) -> str:
+        return hashlib.sha256(data.encode()).hexdigest()
 
-    def short_id(self) -> str:
-        return str(uuid.uuid4())[:8]
-    # auto-commit: 1777399738683
+    def validate(self, data: str, expected: str) -> bool:
+        return self.hash_data(data) == expected
+    # auto-commit: 1777399740158

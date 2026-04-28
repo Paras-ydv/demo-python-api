@@ -1,9 +1,10 @@
-import base64
+from collections import Counter
+from typing import List
 
 class DemoService:
-    def encode(self, text: str) -> str:
-        return base64.b64encode(text.encode()).decode()
+    def count_frequency(self, items: List[str]) -> dict:
+        return dict(Counter(items))
 
-    def decode(self, encoded: str) -> str:
-        return base64.b64decode(encoded.encode()).decode()
-    # auto-commit: 1777399746115
+    def most_common(self, items: List[str], n: int = 1) -> List[tuple]:
+        return Counter(items).most_common(n)
+    # auto-commit: 1777399747634

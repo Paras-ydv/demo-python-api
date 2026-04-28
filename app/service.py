@@ -1,9 +1,6 @@
-import uuid
+from datetime import datetime
 
 class DemoService:
-    def generate_id(self) -> str:
-        return str(uuid.uuid4())
-
-    def short_id(self) -> str:
-        return str(uuid.uuid4())[:8]
-    # auto-commit: 1777399720659
+    def get_status(self):
+        return {"status": "ok", "time": str(datetime.now())}
+    # auto-commit: 1777399722161

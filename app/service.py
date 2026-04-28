@@ -1,10 +1,13 @@
-from collections import Counter
+import random
 from typing import List
 
 class DemoService:
-    def count_frequency(self, items: List[str]) -> dict:
-        return dict(Counter(items))
+    def __init__(self):
+        self.items: List[str] = []
 
-    def most_common(self, items: List[str], n: int = 1) -> List[tuple]:
-        return Counter(items).most_common(n)
-    # auto-commit: 1777399747634
+    def add(self, item: str) -> None:
+        self.items.append(item)
+
+    def get_all(self) -> List[str]:
+        return self.items
+    # auto-commit: 1777399749150

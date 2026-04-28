@@ -1,12 +1,9 @@
-from typing import Dict, Any
+import base64
 
 class DemoService:
-    def __init__(self):
-        self.cache: Dict[str, Any] = {}
+    def encode(self, text: str) -> str:
+        return base64.b64encode(text.encode()).decode()
 
-    def set(self, key: str, value: Any) -> None:
-        self.cache[key] = value
-
-    def get(self, key: str) -> Any:
-        return self.cache.get(key)
-    # auto-commit: 1777399785525
+    def decode(self, encoded: str) -> str:
+        return base64.b64decode(encoded.encode()).decode()
+    # auto-commit: 1777399787419

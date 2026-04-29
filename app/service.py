@@ -1,13 +1,9 @@
-import random
-from typing import List
+import uuid
 
 class DemoService:
-    def __init__(self):
-        self.items: List[str] = []
+    def generate_id(self) -> str:
+        return str(uuid.uuid4())
 
-    def add(self, item: str) -> None:
-        self.items.append(item)
-
-    def get_all(self) -> List[str]:
-        return self.items
-    # auto-commit: 1777405837871
+    def short_id(self) -> str:
+        return str(uuid.uuid4())[:8]
+    # auto-commit: 1777444385800

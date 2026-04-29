@@ -1,12 +1,10 @@
-from typing import Dict, Any
+from collections import Counter
+from typing import List
 
 class DemoService:
-    def __init__(self):
-        self.cache: Dict[str, Any] = {}
+    def count_frequency(self, items: List[str]) -> dict:
+        return dict(Counter(items))
 
-    def set(self, key: str, value: Any) -> None:
-        self.cache[key] = value
-
-    def get(self, key: str) -> Any:
-        return self.cache.get(key)
-    # auto-commit: 1777444387382
+    def most_common(self, items: List[str], n: int = 1) -> List[tuple]:
+        return Counter(items).most_common(n)
+    # auto-commit: 1777444388935

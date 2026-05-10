@@ -1,9 +1,10 @@
-import math
+from collections import Counter
+from typing import List
 
 class DemoService:
-    def distance(self, x1: float, y1: float, x2: float, y2: float) -> float:
-        return math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
+    def count_frequency(self, items: List[str]) -> dict:
+        return dict(Counter(items))
 
-    def area_circle(self, radius: float) -> float:
-        return math.pi * radius ** 2
-    # auto-commit: 1778397150018
+    def most_common(self, items: List[str], n: int = 1) -> List[tuple]:
+        return Counter(items).most_common(n)
+    # auto-commit: 1778397151350

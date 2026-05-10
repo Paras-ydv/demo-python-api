@@ -1,9 +1,9 @@
-import hashlib
+import json
 
 class DemoService:
-    def hash_data(self, data: str) -> str:
-        return hashlib.sha256(data.encode()).hexdigest()
+    def serialize(self, data: dict) -> str:
+        return json.dumps(data)
 
-    def validate(self, data: str, expected: str) -> bool:
-        return self.hash_data(data) == expected
-    # auto-commit: 1778404910651
+    def deserialize(self, text: str) -> dict:
+        return json.loads(text)
+    # auto-commit: 1778446814580

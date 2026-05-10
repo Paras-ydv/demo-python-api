@@ -1,10 +1,9 @@
-from collections import Counter
-from typing import List
+import uuid
 
 class DemoService:
-    def count_frequency(self, items: List[str]) -> dict:
-        return dict(Counter(items))
+    def generate_id(self) -> str:
+        return str(uuid.uuid4())
 
-    def most_common(self, items: List[str], n: int = 1) -> List[tuple]:
-        return Counter(items).most_common(n)
-    # auto-commit: 1778404908830
+    def short_id(self) -> str:
+        return str(uuid.uuid4())[:8]
+    # auto-commit: 1778406441397

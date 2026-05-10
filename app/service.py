@@ -1,6 +1,9 @@
-from datetime import datetime
+import json
 
 class DemoService:
-    def get_status(self):
-        return {"status": "ok", "time": str(datetime.now())}
-    # auto-commit: 1778397152769
+    def serialize(self, data: dict) -> str:
+        return json.dumps(data)
+
+    def deserialize(self, text: str) -> dict:
+        return json.loads(text)
+    # auto-commit: 1778397154258

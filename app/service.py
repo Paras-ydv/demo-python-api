@@ -1,9 +1,9 @@
-import base64
+import uuid
 
 class DemoService:
-    def encode(self, text: str) -> str:
-        return base64.b64encode(text.encode()).decode()
+    def generate_id(self) -> str:
+        return str(uuid.uuid4())
 
-    def decode(self, encoded: str) -> str:
-        return base64.b64decode(encoded.encode()).decode()
-    # auto-commit: 1778397828184
+    def short_id(self) -> str:
+        return str(uuid.uuid4())[:8]
+    # auto-commit: 1778398279350

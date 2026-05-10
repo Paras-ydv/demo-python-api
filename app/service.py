@@ -1,9 +1,9 @@
-import hashlib
+import base64
 
 class DemoService:
-    def hash_data(self, data: str) -> str:
-        return hashlib.sha256(data.encode()).hexdigest()
+    def encode(self, text: str) -> str:
+        return base64.b64encode(text.encode()).decode()
 
-    def validate(self, data: str, expected: str) -> bool:
-        return self.hash_data(data) == expected
-    # auto-commit: 1778397815122
+    def decode(self, encoded: str) -> str:
+        return base64.b64decode(encoded.encode()).decode()
+    # auto-commit: 1778397828184

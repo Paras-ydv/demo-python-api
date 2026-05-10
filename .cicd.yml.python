@@ -1,0 +1,44 @@
+# .cicd.yml - PipelineHub CI/CD Configuration
+name: python-pipeline
+language: python
+environment: staging
+
+# Pipeline stages to execute
+stages:
+  - checkout
+  - install
+  - build
+  - test
+  - security_scan
+  - package
+  - deploy
+  - notify
+
+# Environment variables
+variables:
+  PYTHON_VERSION: "3.11"
+  PYTHONPATH: /app/src
+
+# Custom scripts per stage
+scripts:
+  install:
+    - pip install --upgrade pip
+    - pip install -r requirements.txt
+    - pip install -r requirements-dev.txt
+  build:
+    - python -m compileall src/
+    - black --check src/
+    - flake8 src/
+  test:
+    - pytest tests/ --cov=src --cov-report=xml
+    - coverage report --fail-under=80
+  security_scan:
+    - bandit -r src/
+    - safety check
+    - pip-audit
+  package:
+    - docker build -t $REPO_NAME:$COMMIT_HASH .
+    - docker push $REPO_NAME:$COMMIT_HASH
+  deploy:
+    - kubectl apply -f k8s/deployment.yaml
+    - kubectl set image deployment/$REPO_NAME app=$REPO_NAME:$COMMIT_HASH

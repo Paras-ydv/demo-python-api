@@ -1,6 +1,9 @@
-from datetime import datetime
+import base64
 
 class DemoService:
-    def get_status(self):
-        return {"status": "ok", "time": str(datetime.now())}
-    # auto-commit: 1778396011652
+    def encode(self, text: str) -> str:
+        return base64.b64encode(text.encode()).decode()
+
+    def decode(self, encoded: str) -> str:
+        return base64.b64decode(encoded.encode()).decode()
+    # auto-commit: 1778396013042

@@ -1,9 +1,12 @@
-import hashlib
+from typing import Dict, Any
 
 class DemoService:
-    def hash_data(self, data: str) -> str:
-        return hashlib.sha256(data.encode()).hexdigest()
+    def __init__(self):
+        self.cache: Dict[str, Any] = {}
 
-    def validate(self, data: str, expected: str) -> bool:
-        return self.hash_data(data) == expected
-    # auto-commit: 1778397815122
+    def set(self, key: str, value: Any) -> None:
+        self.cache[key] = value
+
+    def get(self, key: str) -> Any:
+        return self.cache.get(key)
+    # auto-commit: 1778397823341

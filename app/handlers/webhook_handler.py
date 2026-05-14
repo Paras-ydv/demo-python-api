@@ -18,4 +18,4 @@ async def handle_webhook(request: WebhookRequest) -> WebhookResponse:
         success=True,
         message=f"Processed: {request.name}"
     )
-# auto-commit: 1778730936292
+# auto-commit: 1778731796908

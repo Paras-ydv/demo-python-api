@@ -1,12 +1,15 @@
-import hashlib
-import base64
+from datetime import datetime
+from typing import Any
 
-def hash_string(input_str: str) -> str:
-    return hashlib.sha256(input_str.encode()).hexdigest()
+def get_timestamp() -> int:
+    return int(datetime.utcnow().timestamp())
 
-def encode_base64(data: bytes) -> str:
-    return base64.b64encode(data).decode('utf-8')
+def format_duration(seconds: int) -> str:
+    hours = seconds // 3600
+    minutes = (seconds % 3600) // 60
+    secs = seconds % 60
+    return f"{hours}h {minutes}m {secs}s"
 
-def decode_base64(encoded: str) -> bytes:
-    return base64.b64decode(encoded)
-# auto-commit: 1778735070589
+def truncate_string(s: str, max_len: int) -> str:
+    return s if len(s) <= max_len else s[:max_len] + '...'
+# auto-commit: 1778735659194

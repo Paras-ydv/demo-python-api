@@ -1,20 +1,22 @@
-import requests
-from typing import Dict, Any
+from typing import Dict, Any, Optional
+from datetime import datetime
 
 class ApiService:
-    def __init__(self, base_url: str):
-        self.base_url = base_url
-        self.session = requests.Session()
+    def __init__(self):
+        self._cache: Dict[str, Any] = {}
     
-    def fetch(self, endpoint: str) -> Dict[str, Any]:
-        url = f"{self.base_url}/{endpoint}"
-        response = self.session.get(url)
-        response.raise_for_status()
-        return response.json()
+    def get(self, key: str) -> Optional[Any]:
+        return self._cache.get(key)
     
-    def post(self, endpoint: str, data: Dict[str, Any]) -> Dict[str, Any]:
-        url = f"{self.base_url}/{endpoint}"
-        response = self.session.post(url, json=data)
-        response.raise_for_status()
-        return response.json()
-# auto-commit: 1778455759812
+    def set(self, key: str, value: Any) -> None:
+        self._cache[key] = value
+    
+    def delete(self, key: str) -> bool:
+        if key in self._cache:
+            del self._cache[key]
+            return True
+        return False
+    
+    def clear(self) -> None:
+        self._cache.clear()
+# auto-commit: 1778735064727

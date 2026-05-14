@@ -1,19 +1,14 @@
-import pytest
-from app.services.report_service import ReportService
+import unittest
+from app.models.report import Report
 
-@pytest.fixture
-def service():
-    return ReportService()
-
-def test_report_creation(service):
-    assert service is not None
-
-def test_report_set_and_get(service):
-    service.set('key', 'value')
-    assert service.get('key') == 'value'
-
-def test_report_delete(service):
-    service.set('key', 'value')
-    assert service.delete('key') is True
-    assert service.get('key') is None
-# auto-commit: 1778586661664
+class TestReport(unittest.TestCase):
+    def test_creation(self):
+        obj = Report.create('test', 'test@example.com')
+        self.assertIsNotNone(obj.id)
+        self.assertEqual(obj.name, 'test')
+    
+    def test_update(self):
+        obj = Report.create('test', 'test@example.com')
+        obj.update_name('updated')
+        self.assertEqual(obj.name, 'updated')
+# auto-commit: 1778733375967

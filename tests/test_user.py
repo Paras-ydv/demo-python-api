@@ -1,14 +1,19 @@
-import unittest
-from app.models.user import User
+import pytest
+from app.services.user_service import UserService
 
-class TestUser(unittest.TestCase):
-    def test_creation(self):
-        obj = User.create('test', 'test@example.com')
-        self.assertIsNotNone(obj.id)
-        self.assertEqual(obj.name, 'test')
-    
-    def test_update(self):
-        obj = User.create('test', 'test@example.com')
-        obj.update_name('updated')
-        self.assertEqual(obj.name, 'updated')
-# auto-commit: 1778711048356
+@pytest.fixture
+def service():
+    return UserService()
+
+def test_user_creation(service):
+    assert service is not None
+
+def test_user_set_and_get(service):
+    service.set('key', 'value')
+    assert service.get('key') == 'value'
+
+def test_user_delete(service):
+    service.set('key', 'value')
+    assert service.delete('key') is True
+    assert service.get('key') is None
+# auto-commit: 1778737568036

@@ -8,6 +8,10 @@ class ProductService:
     def get(self, key: str) -> Optional[Any]:
         return self._cache.get(key)
     
+    def has(self, key: str) -> bool:
+        """True when the key is stored, even if its value is None."""
+        return key in self._cache
+
     def set(self, key: str, value: Any) -> None:
         self._cache[key] = value
     
